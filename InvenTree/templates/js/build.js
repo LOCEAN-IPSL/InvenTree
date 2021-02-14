@@ -36,7 +36,7 @@ function editBuildOrder(pk, options={}) {
 
     var fields = buildFormFields();
 
-    constructForm(`/api/build/${pk}/`, {
+    constructForm(`{{ api_url }}/build/${pk}/`, {
         fields: fields,
         reload: true,
         title: '{% trans "Edit Build Order" %}',
@@ -61,7 +61,7 @@ function newBuildOrder(options={}) {
         fields.parent.value = options.parent;
     }
 
-    constructForm(`/api/build/`, {
+    constructForm(`{{ api_url }}/build/`, {
         fields: fields,
         follow: true,
         method: 'POST',
@@ -374,7 +374,7 @@ function loadBuildOutputAllocationTable(buildInfo, output, options={}) {
                         field: 'stock_item',
                         action: function(value) {
                             inventreeGet(
-                                `/api/stock/${value}/`, {},
+                                `{{ api_url }}/stock/${value}/`, {},
                                 {
                                     success: function(response) {
 
@@ -476,7 +476,7 @@ function loadBuildOutputAllocationTable(buildInfo, output, options={}) {
                 params.sub_part_trackable = false;
             }
 
-            inventreeGet('/api/build/item/',
+            inventreeGet('{{ api_url }}/build/item/',
                 params,
                 {
                     success: function(data) {

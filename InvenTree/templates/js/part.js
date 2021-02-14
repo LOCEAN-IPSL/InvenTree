@@ -23,7 +23,7 @@ function toggleStar(options) {
      * - user: pk of the user
      */
 
-    var url = `/api/part/${options.part}/`;
+    var url = `{{ api_url }}/part/${options.part}/`;
 
     inventreeGet(url, {}, {
         success: function(response) {
@@ -294,7 +294,7 @@ function loadPartParameterTable(table, url, options) {
             $(table).find('.button-parameter-edit').click(function() {
                 var pk = $(this).attr('pk');
 
-                constructForm(`/api/part/parameter/${pk}/`, {
+                constructForm(`{{ api_url }}/part/parameter/${pk}/`, {
                     fields: {
                         data: {},
                     },
@@ -308,7 +308,7 @@ function loadPartParameterTable(table, url, options) {
             $(table).find('.button-parameter-delete').click(function() {
                 var pk = $(this).attr('pk');
 
-                constructForm(`/api/part/parameter/${pk}/`, {
+                constructForm(`{{ api_url }}/part/parameter/${pk}/`, {
                     method: 'DELETE',
                     title: '{% trans "Delete Parameter" %}',
                     onSuccess: function() {
@@ -643,7 +643,7 @@ function loadPartTable(table, url, options={}) {
             return html;
         }
     });
-    
+
     if (options.buttons) {
         linkButtonsToSelection($(table), options.buttons);
     }
