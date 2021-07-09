@@ -188,11 +188,10 @@ if cors_opt:
 # URL subpath prefix (e.g. for hosting files at a subdirectory such as https://hostname.com/inventree)
 SUBPATH_URL = get_setting(
     'INVENTREE_SUBPATH',
-    CONFIG.get('subpath', None)
+    CONFIG.get('subpath', '/')
 )
 
 if SUBPATH_URL:
-
     SUBPATH_URL = SUBPATH_URL.strip()
 
     # Ensure that the subpath starts and ends with /
@@ -205,9 +204,8 @@ if SUBPATH_URL:
 FORCE_SCRIPT_NAME = SUBPATH_URL
 
 # Web URL endpoint for served static files
-STATIC_URL = '/static/'
-
-API_URL = '/api/'
+STATIC_URL = 'static/'
+API_URL = 'api/'
 
 if SUBPATH_URL:
     STATIC_URL = os.path.join(SUBPATH_URL, STATIC_URL)
@@ -240,7 +238,7 @@ STATFILES_I18_PROCESSORS = [
 STATIC_COLOR_THEMES_DIR = os.path.join(STATIC_ROOT, 'css', 'color-themes')
 
 # Web URL endpoint for served media files
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 
 if SUBPATH_URL:
     MEDIA_URL = os.path.join(SUBPATH_URL, MEDIA_URL)
