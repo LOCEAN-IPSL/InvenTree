@@ -71,7 +71,7 @@ function inventreeDocReady() {
 
     // Callback to launch the 'Database Stats' window
     $('#launch-stats').click(function() {
-        launchModalForm("/stats/", {
+        launchModalForm("{% url 'stats' %}", {
             no_post: true,
         });
     });

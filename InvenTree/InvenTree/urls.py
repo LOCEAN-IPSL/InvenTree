@@ -120,6 +120,7 @@ dynamic_javascript_urls = [
     url(r'^tables.js', DynamicJsView.as_view(template_name='js/tables.js'), name='tables.js'),
     url(r'^table_filters.js', DynamicJsView.as_view(template_name='js/table_filters.js'), name='table_filters.js'),
     url(r'^filters.js', DynamicJsView.as_view(template_name='js/filters.js'), name='filters.js'),
+    url(r'^inventree.js', DynamicJsView.as_view(template_name='js/inventree.js'), name='inventree.js'),
 ]
 
 urlpatterns = [
@@ -182,4 +183,4 @@ if settings.DEBUG:
         ] + urlpatterns
 
 # Send any unknown URLs to the parts page
-urlpatterns += [url(r'^.*$', RedirectView.as_view(url='/index/', permanent=False), name='index')]
+urlpatterns += [url(r'^.*$', RedirectView.as_view(url=settings.SUBPATH_URL+'index/', permanent=False), name='index')]
